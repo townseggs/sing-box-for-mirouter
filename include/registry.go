@@ -1,3 +1,5 @@
+//go:build !router
+
 package include
 
 import (
