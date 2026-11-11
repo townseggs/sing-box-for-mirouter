@@ -5,6 +5,7 @@
 // 只注册两台路由器实际用到的模块：
 //
 //	inbound     redirect（iptables REDIRECT 透明代理）
+//	            tproxy（iptables TPROXY 透明代理，TCP/UDP）
 //	            direct（DNS 入口 5053 / QUIC 入口 2443）
 //	outbound    vless（VLESS + REALITY 出站，TLS/uTLS 由 with_utls tag 提供）
 //	            direct
@@ -48,6 +49,7 @@ func InboundRegistry() *inbound.Registry {
 	registry := inbound.NewRegistry()
 
 	redirect.RegisterRedirect(registry)
+	redirect.RegisterTProxy(registry)
 	direct.RegisterInbound(registry)
 
 	return registry
