@@ -1,3 +1,8 @@
+//go:build !router
+
+// The router profile replaces this implementation with outbound_router.go.
+// Keep the upstream implementation for normal builds.
+
 package vless
 
 import (

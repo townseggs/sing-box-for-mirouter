@@ -1,3 +1,8 @@
+//go:build !router
+
+// The router profile supports VLESS outbound only.
+// Keep the upstream inbound implementation for normal builds.
+
 package vless
 
 import (

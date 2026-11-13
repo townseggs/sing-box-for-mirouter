@@ -1,6 +1,9 @@
-//go:build !with_quic
+//go:build !with_quic && !router
 
 package include
+
+// The router profile excludes these registrations because WARP does not
+// support UDP/QUIC. The upstream stubs remain available to normal builds.
 
 import (
 	"context"
@@ -23,6 +26,7 @@ import (
 	N "github.com/sagernet/sing/common/network"
 )
 
+// WARP 不支持 UDP/QUIC 协议，直接拒绝相关配置。
 func init() {
 	v2ray.RegisterQUICConstructor(
 		func(ctx context.Context, logger logger.ContextLogger, options option.V2RayQUICOptions, tlsConfig tls.ServerConfig, handler adapter.V2RayServerTransportHandler) (adapter.V2RayServerTransport, error) {

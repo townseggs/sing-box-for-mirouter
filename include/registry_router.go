@@ -48,6 +48,7 @@ func InboundRegistry() *inbound.Registry {
 	registry := inbound.NewRegistry()
 
 	redirect.RegisterRedirect(registry)
+	// redirect.RegisterTProxy(registry) // Disabled: router rules use REDIRECT.
 	direct.RegisterInbound(registry)
 
 	return registry
